@@ -43,7 +43,7 @@ export default function Home() {
           className="object-cover"
           alt="starwars"
         />
-        <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 text-white z-10">
+        <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 pb-4 text-white z-10">
           <form
             onSubmit={fetchPeople}
             className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
