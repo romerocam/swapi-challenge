@@ -4,23 +4,28 @@ import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import Spinner from "../components/Spinner";
 import Image from "next/image";
+import Person from "../components/Person";
+
 
 export default function Home() {
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
   const [loading, setLoading] = useState(false);
-  const url = "https://swapi.dev/api/people/1/";
+  const url = `https://swapi.dev/api/people/?search=${name}`;
 
   const fetchPeople = (e) => {
     e.preventDefault();
     setLoading(true);
     axios.get(url).then((response) => {
       setPeople(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
-    setName("");
+    setId("");
     setLoading(false);
   };
+  console.log("PEOPLE", people);
+  console.log("Name", name);
   if (loading) {
     return <Spinner />;
   } else {
@@ -38,14 +43,25 @@ export default function Home() {
           className="object-cover"
           alt="starwars"
         />
-        <div className='relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 text-white z-10'>
-          <form className='flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl'>
+        <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 text-white z-10">
+          <form
+            onSubmit={fetchPeople}
+            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
+          >
             <div>
-              <input type='text' placeholder="Search" className='bg-transparent border-none text-white focus:outline-none text-2xl'/>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Search"
+                className="bg-transparent border-none text-white focus:outline-none text-2xl"
+              />
             </div>
-            <button onClick={fetchPeople}><BsSearch size={20}/></button>
+            <button onClick={fetchPeople}>
+              <BsSearch size={20} />
+            </button>
           </form>
         </div>
+        {name && <Person data={people} />}
       </div>
     );
   }
