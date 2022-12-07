@@ -8,7 +8,7 @@ import Person from "../components/Person";
 import CharacterList from "../components/CharacterList";
 
 export default function Home() {
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
   const [characters, setCharacters] = useState({});
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
@@ -18,11 +18,15 @@ export default function Home() {
   const fetchPeople = (e) => {
     e.preventDefault();
     setLoading(true);
-    axios.get(url).then((response) => {
-      setPeople(response.data);
-      // console.log(response.data);
-    });
-    setId("");
+    try {
+      axios.get(url).then((response) => {
+        setPeople(response.data);
+        // console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    // setId("");
     setLoading(false);
   };
   console.log("PEOPLE", people);
@@ -69,10 +73,12 @@ export default function Home() {
             </button>
           </form>
         </div>
+
+        {people.results ? (
+          <Person data={people} />
+        ) : (
           <CharacterList characters={characters} />
-        
-        
-        {name && <Person data={people} />}
+        )}
       </div>
     );
   }
