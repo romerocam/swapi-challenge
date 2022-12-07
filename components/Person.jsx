@@ -11,10 +11,10 @@ const Person = ({ data }) => {
         >
           <div className=" bg-black/50 rounded-md flex flex-col items-center">
             <div>
-              <p className="text-4xl">NAME: {d.name}</p>
+              <p className="text-3xl">NAME: {d.name}</p>
             </div>
             <p className="text-2xl">GENDER: {d.gender}</p>
-            <p className="text-2xl">HEIGHT: {d.height}</p>
+            <p className="text-1xl">HEIGHT: {d.height}</p>
           </div>
         </div>
       ))}

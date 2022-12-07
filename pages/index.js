@@ -8,11 +8,12 @@ import Person from "../components/Person";
 import CharacterList from "../components/CharacterList";
 
 export default function Home() {
-  // const [id, setId] = useState("");
   const [characters, setCharacters] = useState({});
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
   const [loading, setLoading] = useState(false);
+  const [next, setNext] = useState("");
+  const [previous, setPrevious] = useState("");
   const url = `https://swapi.dev/api/people/?search=${name}`;
 
   const fetchPeople = (e) => {
@@ -21,21 +22,39 @@ export default function Home() {
     try {
       axios.get(url).then((response) => {
         setPeople(response.data);
-        // console.log(response.data);
       });
     } catch (error) {
       console.log(error);
     }
-    // setId("");
     setLoading(false);
   };
-  console.log("PEOPLE", people);
-  console.log("Name", name);
+  console.log("PreviousPAGE--->", previous);
+  console.log("NEXTPAGE--->", next);
+  // console.log("PEOPLE", people);
+  // console.log("Name", name);
+
+  const handleNextPage = () => {
+    axios.get(next).then((response) => {
+      setCharacters(response.data);
+      setPrevious(response.data.previous);
+      setNext(response.data.next);
+    });
+  };
+
+  const handlePreviousPage = () => {
+    axios.get(previous).then((response) => {
+      setCharacters(response.data);
+      setPrevious(response.data.previous);
+      setNext(response.data.next);
+    });
+  };
+
   useEffect(() => {
-    axios
-      .get("https://swapi.dev/api/people/")
-      .then((res) => setCharacters(res.data));
-    console.log("Characters--->", characters);
+    axios.get("https://swapi.dev/api/people/").then((res) => {
+      setCharacters(res.data);
+      setNext(res.data.next);
+    });
+    // console.log("Characters--->", characters);
   }, []);
 
   if (loading) {
@@ -58,7 +77,7 @@ export default function Home() {
         <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 pb-4 text-white z-10">
           <form
             onSubmit={fetchPeople}
-            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
+            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl"
           >
             <div>
               <input
@@ -73,13 +92,21 @@ export default function Home() {
             </button>
           </form>
         </div>
-        <div>
+        <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 pb-4 text-white z-10">
+          <button className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl" disabled={!previous} onClick={handlePreviousPage}>
+            Previous
+          </button>
 
-        {people.results ? (
-          <Person data={people} />
-        ) : (
-          <CharacterList characters={characters} />
-        )}
+          <button className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl" disabled={!next} onClick={handleNextPage}>
+            Next
+          </button>
+        </div>
+        <div>
+          {people.results ? (
+            <Person data={people} />
+          ) : (
+            <CharacterList characters={characters} />
+          )}
         </div>
       </div>
     );
