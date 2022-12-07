@@ -3,11 +3,11 @@ import React from "react";
 const CharacterList = ({ characters }) => {
   console.log("Chars in CharacterList--->", characters);
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex justify-center items-center">
       <div>
         {characters?.results?.map((item, index) => (
           <div key={index}>
-            <div className="relative  justify-between max-w-[500px] w-full h-[90vh] m-auto p-4 text-gray-300 z-10">
+            <div className="relative items-center m-auto p-2 text-gray-300 z-10">
               <div className=" bg-black/50 rounded-md flex flex-col items-center">
                 <div>
                   <p className="text-4xl">NAME: {item.name}</p>

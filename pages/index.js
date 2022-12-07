@@ -73,12 +73,14 @@ export default function Home() {
             </button>
           </form>
         </div>
+        <div>
 
         {people.results ? (
           <Person data={people} />
         ) : (
           <CharacterList characters={characters} />
         )}
+        </div>
       </div>
     );
   }
