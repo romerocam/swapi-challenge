@@ -1,14 +1,15 @@
 import Head from "next/head";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import Spinner from "../components/Spinner";
 import Image from "next/image";
 import Person from "../components/Person";
-
+import CharacterList from "../components/CharacterList";
 
 export default function Home() {
   const [id, setId] = useState("");
+  const [characters, setCharacters] = useState({});
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,13 @@ export default function Home() {
   };
   console.log("PEOPLE", people);
   console.log("Name", name);
+  useEffect(() => {
+    axios
+      .get("https://swapi.dev/api/people/")
+      .then((res) => setCharacters(res.data));
+    console.log("Characters--->", characters);
+  }, []);
+
   if (loading) {
     return <Spinner />;
   } else {
@@ -61,6 +69,9 @@ export default function Home() {
             </button>
           </form>
         </div>
+          <CharacterList characters={characters} />
+        
+        
         {name && <Person data={people} />}
       </div>
     );
