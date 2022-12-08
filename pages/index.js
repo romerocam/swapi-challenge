@@ -16,7 +16,7 @@ export default function Home() {
   const [previous, setPrevious] = useState("");
   const url = `https://swapi.dev/api/people/?search=${name}`;
 
-  const fetchPeople = (e) => {
+  const fetchCharacter = (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -76,7 +76,7 @@ export default function Home() {
         />
         <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 pb-4 text-white z-10">
           <form
-            onSubmit={fetchPeople}
+            onSubmit={fetchCharacter}
             className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl"
           >
             <div>
@@ -87,17 +87,25 @@ export default function Home() {
                 className="bg-transparent border-none text-white focus:outline-none text-2xl"
               />
             </div>
-            <button onClick={fetchPeople}>
+            <button onClick={fetchCharacter}>
               <BsSearch size={20} />
             </button>
           </form>
         </div>
         <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 px-4 pb-4 text-white z-10">
-          <button className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl" disabled={!previous} onClick={handlePreviousPage}>
+          <button
+            className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl"
+            disabled={!previous}
+            onClick={handlePreviousPage}
+          >
             Previous
           </button>
 
-          <button className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl" disabled={!next} onClick={handleNextPage}>
+          <button
+            className="flex justify-center items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-3xl"
+            disabled={!next}
+            onClick={handleNextPage}
+          >
             Next
           </button>
         </div>

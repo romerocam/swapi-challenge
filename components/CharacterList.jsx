@@ -25,28 +25,4 @@ const CharacterList = ({ characters }) => {
 
 export default CharacterList;
 
-// export async function getServerSideProps(context) {
-//   //   // console.log("CONTEXT", context)
 
-//   //   const session = await getSession({ req: context.req });
-
-//   //   //console.log("SESSION", session)
-
-//   //   if (session === null || session.user.role !== "admin") {
-//   //     return {
-//   //       redirect: {
-//   //         destination: "/",
-//   //         permanent: false,
-//   //       },
-//   //     };
-//   //   }
-//   axios.get("https://swapi.dev/api/people/").then((res) => {
-//     return {
-//       props: { characters: res.data },
-//     };
-//     //   setNext(res.data.next);
-//   });
-//   //   return {
-//   //     props: {},
-//   //   };
-// }
