@@ -2,13 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const CharacterList = () => {
+const CharacterList = (/*{props}*/) => {
   const [characters, setCharacters] = useState({});
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");
-
+  //   const [next, setNext] = useState(props.next);
+  //   const [previous, setPrevious] = useState(props.previous);
+//   console.log("PROPS", props);
+  console.log("NEXT", next);
+  console.log("PREVIOUS", previous);
+  console.log("CHARACTERS", characters);
   const handleNextPage = () => {
     axios.get(next).then((response) => {
+      console.log("RESPONSE", response);
       setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
@@ -29,7 +35,7 @@ const CharacterList = () => {
       setNext(res.data.next);
     });
   }, []);
-//   console.log("Chars in CharacterList--->", characters);
+  //   console.log("Chars in CharacterList--->", characters);
   return (
     <>
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]" />
@@ -59,14 +65,14 @@ const CharacterList = () => {
       </div>
       <div className="columns-2 justify-center items-center">
         <div>
-          {characters?.results?.map((item, index) => (
+          {/*props?*/characters?.results?.map((item, index) => (
             <div key={index}>
               <div className="relative items-center m-auto p-2 text-gray-300 z-10">
                 <div className=" bg-black/50 rounded-md flex flex-col items-center">
                   <div>
                     <p className="text-3xl ">NAME: {item.name}</p>
                   </div>
-                  <p className="text-2xl">GENDER: {item.gender}</p>
+                  {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
                   <p className="text-1xl">HEIGHT: {item.height}</p>
                 </div>
               </div>
@@ -81,14 +87,11 @@ const CharacterList = () => {
 export default CharacterList;
 
 // export async function getServerSideProps(context) {
-//   const res = await axios.get("https://swapi.dev/api/people/");
+//   const res = await fetch("https://swapi.dev/api/people/");
 //   const data = await res.json();
-//   //   axios.get("https://swapi.dev/api/people/").then((res) => {
-//   //       setCharacters(res.data);
-//   //       setNext(res.data.next);
-//   // });
+//   console.log("acaaa", data);
 
 //   return {
-//     props: {data},
+//     props: { data },
 //   };
 // }
