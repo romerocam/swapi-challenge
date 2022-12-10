@@ -8,7 +8,7 @@ const CharacterList = (/*{props}*/) => {
   const [previous, setPrevious] = useState("");
   //   const [next, setNext] = useState(props.next);
   //   const [previous, setPrevious] = useState(props.previous);
-//   console.log("PROPS", props);
+  //   console.log("PROPS", props);
   console.log("NEXT", next);
   console.log("PREVIOUS", previous);
   console.log("CHARACTERS", characters);
@@ -65,19 +65,21 @@ const CharacterList = (/*{props}*/) => {
       </div>
       <div className="columns-2 justify-center items-center">
         <div>
-          {/*props?*/characters?.results?.map((item, index) => (
-            <div key={index}>
-              <div className="relative items-center m-auto p-2 text-gray-300 z-10">
-                <div className=" bg-black/50 rounded-md flex flex-col items-center">
-                  <div>
-                    <p className="text-3xl ">NAME: {item.name}</p>
+          {
+            /*props?*/ characters?.results?.map((item, index) => (
+              <div key={index}>
+                <div className="relative items-center m-auto p-2 text-gray-300 z-10">
+                  <div className=" bg-black/50 rounded-md flex flex-col items-center">
+                    <div>
+                      <p className="text-3xl ">NAME: {item.name}</p>
+                    </div>
+                    {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
+                    <p className="text-1xl">HEIGHT: {item.height}</p>
                   </div>
-                  {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
-                  <p className="text-1xl">HEIGHT: {item.height}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </>
