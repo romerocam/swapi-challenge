@@ -7,7 +7,7 @@ import Image from "next/image";
 import Person from "../components/Person";
 import CharacterList from "../components/CharacterList";
 
-export default function Home(/*{data}*/) {
+export default function Home({data}) {
   // const [characters, setCharacters] = useState({});
   // const [name, setName] = useState("");
   // const [people, setPeople] = useState({});
@@ -65,7 +65,7 @@ export default function Home(/*{data}*/) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Person />
-      <CharacterList /*props ={data}*/ />
+      <CharacterList props ={data} />
       {/* <div>
           {people.results ? <Person data={people} /> : <CharacterList />}
         </div> */}
@@ -73,12 +73,12 @@ export default function Home(/*{data}*/) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch("https://swapi.dev/api/people/");
-//   const data = await res.json();
-//   console.log("acaaa", data);
+export async function getServerSideProps(context) {
+  const res = await fetch("https://swapi.dev/api/people/");
+  const data = await res.json();
+  console.log("acaaa", data);
 
-//   return {
-//     props: { data },
-//   };
-// }
+  return {
+    props: { data },
+  };
+}
