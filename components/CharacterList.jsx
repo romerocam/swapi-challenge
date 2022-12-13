@@ -14,7 +14,7 @@ const CharacterList = ({props}) => {
 //   console.log("CHARACTERS", characters);
   const handleNextPage = () => {
     axios.get(next).then((response) => {
-    //   console.log("RESPONSE", response);
+      console.log("RESPONSE", response);
     //   setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
@@ -36,7 +36,7 @@ const CharacterList = ({props}) => {
       setNext(props.next);
     });
     console.log("NEXT in USEEFFECT--->", next);
-  }, [next]);
+  }, []);
   return (
     <>
       <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[1]" />
