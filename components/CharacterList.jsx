@@ -3,19 +3,18 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const CharacterList = ({ props }) => {
-    const [characters, setCharacters] = useState(props.results);
+  const [characters, setCharacters] = useState(props.results);
   const [next, setNext] = useState("");
-  //   const [previous, setPrevious] = useState("");
-  // const [next, setNext] = useState(props.next);
   const [previous, setPrevious] = useState(props.previous);
-  console.log("PROPS", props);
-  console.log("NEXT", next);
-  console.log("PREVIOUS", previous);
+  //   console.log("PROPS", props);
+  //   console.log("NEXT", next);
+  //   console.log("PREVIOUS", previous);
   //   console.log("CHARACTERS", characters);
+
   const handleNextPage = () => {
     axios.get(next).then((response) => {
       console.log("RESPONSE", response);
-        setCharacters(response.data);
+      setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
     });
@@ -23,7 +22,7 @@ const CharacterList = ({ props }) => {
 
   const handlePreviousPage = () => {
     axios.get(previous).then((response) => {
-      //   setCharacters(response.data);
+      setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
     });
@@ -32,7 +31,7 @@ const CharacterList = ({ props }) => {
   useEffect(() => {
     // axios.get("https://swapi.dev/api/people/").then((res)
     axios.get(props.next).then((res) => {
-      //   setCharacters(res.data);
+      setCharacters(res.data);
       setNext(props.next);
     });
     console.log("NEXT in USEEFFECT--->", next);
