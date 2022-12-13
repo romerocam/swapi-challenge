@@ -3,19 +3,19 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const CharacterList = ({ props }) => {
-  //   const [characters, setCharacters] = useState({});
+    const [characters, setCharacters] = useState(props.results);
   const [next, setNext] = useState("");
   //   const [previous, setPrevious] = useState("");
   // const [next, setNext] = useState(props.next);
   const [previous, setPrevious] = useState(props.previous);
-  // console.log("PROPS", props);
+  console.log("PROPS", props);
   console.log("NEXT", next);
   console.log("PREVIOUS", previous);
   //   console.log("CHARACTERS", characters);
   const handleNextPage = () => {
     axios.get(next).then((response) => {
       console.log("RESPONSE", response);
-      //   setCharacters(response.data);
+        setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
     });
@@ -67,7 +67,7 @@ const CharacterList = ({ props }) => {
       <div className="columns-2 justify-center items-center">
         <div>
           {
-            /*characters?*/ props?.results?.map((item, index) => (
+            /*props??*/ characters?.results?.map((item, index) => (
               <div key={index}>
                 <div className="relative items-center m-auto p-2 text-gray-300 z-10">
                   <div className=" bg-black/50 rounded-md flex flex-col items-center">
