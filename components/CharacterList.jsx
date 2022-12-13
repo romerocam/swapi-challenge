@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const CharacterList = ({props}) => {
 //   const [characters, setCharacters] = useState({});
-//   const [next, setNext] = useState("");
+  const [next, setNext] = useState("");
 //   const [previous, setPrevious] = useState("");
-    const [next, setNext] = useState(props.next);
+    // const [next, setNext] = useState(props.next);
     const [previous, setPrevious] = useState(props.previous);
     console.log("PROPS", props);
   console.log("NEXT", next);
