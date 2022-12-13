@@ -2,20 +2,20 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const CharacterList = ({props}) => {
-//   const [characters, setCharacters] = useState({});
+const CharacterList = ({ props }) => {
+  //   const [characters, setCharacters] = useState({});
   const [next, setNext] = useState("");
-//   const [previous, setPrevious] = useState("");
-    // const [next, setNext] = useState(props.next);
-    const [previous, setPrevious] = useState(props.previous);
-    console.log("PROPS", props);
+  //   const [previous, setPrevious] = useState("");
+  // const [next, setNext] = useState(props.next);
+  const [previous, setPrevious] = useState(props.previous);
+  // console.log("PROPS", props);
   console.log("NEXT", next);
   console.log("PREVIOUS", previous);
-//   console.log("CHARACTERS", characters);
+  //   console.log("CHARACTERS", characters);
   const handleNextPage = () => {
     axios.get(next).then((response) => {
       console.log("RESPONSE", response);
-    //   setCharacters(response.data);
+      //   setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
     });
@@ -23,16 +23,16 @@ const CharacterList = ({props}) => {
 
   const handlePreviousPage = () => {
     axios.get(previous).then((response) => {
-    //   setCharacters(response.data);
+      //   setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
     });
   };
 
   useEffect(() => {
-    // axios.get("https://swapi.dev/api/people/").then((res) 
-    axios.get(props.next).then((res)=> {
-    //   setCharacters(res.data);
+    // axios.get("https://swapi.dev/api/people/").then((res)
+    axios.get(props.next).then((res) => {
+      //   setCharacters(res.data);
       setNext(props.next);
     });
     console.log("NEXT in USEEFFECT--->", next);
@@ -67,7 +67,7 @@ const CharacterList = ({props}) => {
       <div className="columns-2 justify-center items-center">
         <div>
           {
-            /*characters?*/props?.results?.map((item, index) => (
+            /*characters?*/ props?.results?.map((item, index) => (
               <div key={index}>
                 <div className="relative items-center m-auto p-2 text-gray-300 z-10">
                   <div className=" bg-black/50 rounded-md flex flex-col items-center">
