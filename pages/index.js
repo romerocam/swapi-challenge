@@ -3,8 +3,6 @@ import Person from "../components/Person";
 import CharacterList from "../components/CharacterList";
 
 export default function Home({ data }) {
-
-
   return (
     <div>
       <Head>
