@@ -1,61 +1,9 @@
 import Head from "next/head";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { BsSearch } from "react-icons/bs";
-import Spinner from "../components/Spinner";
-import Image from "next/image";
 import Person from "../components/Person";
 import CharacterList from "../components/CharacterList";
 
-export default function Home({data}) {
-  // const [characters, setCharacters] = useState({});
-  // const [name, setName] = useState("");
-  // const [people, setPeople] = useState({});
-  // const [loading, setLoading] = useState(false);
-  // const [next, setNext] = useState("");
-  // const [previous, setPrevious] = useState("");
-  // const url = `https://swapi.dev/api/people/?search=${name}`;
+export default function Home({ data }) {
 
-  // const fetchCharacter = (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     axios.get(url).then((response) => {
-  //       setPeople(response.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   setLoading(false);
-  // };
-  // console.log("PreviousPAGE--->", previous);
-  // console.log("NEXTPAGE--->", next);
-  // console.log("PEOPLE", people);
-  // console.log("Name", name);
-
-  // const handleNextPage = () => {
-  //   axios.get(next).then((response) => {
-  //     setCharacters(response.data);
-  //     setPrevious(response.data.previous);
-  //     setNext(response.data.next);
-  //   });
-  // };
-
-  // const handlePreviousPage = () => {
-  //   axios.get(previous).then((response) => {
-  //     setCharacters(response.data);
-  //     setPrevious(response.data.previous);
-  //     setNext(response.data.next);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   axios.get("https://swapi.dev/api/people/").then((res) => {
-  //     setCharacters(res.data);
-  //     setNext(res.data.next);
-  //   });
-  //   // console.log("Characters--->", characters);
-  // }, []);
 
   return (
     <div>
@@ -65,7 +13,7 @@ export default function Home({data}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Person />
-      <CharacterList props ={data} />
+      <CharacterList props={data} />
       {/* <div>
           {people.results ? <Person data={people} /> : <CharacterList />}
         </div> */}

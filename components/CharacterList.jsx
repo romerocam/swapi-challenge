@@ -30,11 +30,11 @@ const CharacterList = ({ props }) => {
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people/").then((res) => {
-    //   console.log("res in useEffect", res);
+      //   console.log("res in useEffect", res);
       setCharacters(res.data);
-    //   console.log("CHARACTERS IN USEEFFECT--->", characters);
+      //   console.log("CHARACTERS IN USEEFFECT--->", characters);
       setNext(props.next);
-    //   console.log("NEXT in USEEFFECT--->", props.next);
+      //   console.log("NEXT in USEEFFECT--->", props.next);
     });
   }, []);
   return (
@@ -43,7 +43,7 @@ const CharacterList = ({ props }) => {
       <Image
         src="https://images.unsplash.com/photo-1547700055-b61cacebece9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHN0YXIlMjB3YXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
         layout="fill"
-        className="object-cover"
+        className="object-cover fill"
         alt="starwars"
       />
 
@@ -66,21 +66,19 @@ const CharacterList = ({ props }) => {
       </div>
       <div className="columns-2 justify-center items-center">
         <div>
-          {
-            /*props??*/ characters?.results?.map((item, index) => (
-              <div key={index}>
-                <div className="relative items-center m-auto p-2 text-gray-300 z-10">
-                  <div className=" bg-black/50 rounded-md flex flex-col items-center">
-                    <div>
-                      <p className="text-3xl ">NAME: {item.name}</p>
-                    </div>
-                    {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
-                    <p className="text-1xl">HEIGHT: {item.height}</p>
+          {characters?.results?.map((item, index) => (
+            <div key={index}>
+              <div className="relative items-center m-auto p-2 text-gray-300 z-10">
+                <div className=" bg-black/50 rounded-md flex flex-col items-center">
+                  <div>
+                    <p className="text-3xl ">NAME: {item.name}</p>
                   </div>
+                  {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
+                  <p className="text-1xl">HEIGHT: {item.height}</p>
                 </div>
               </div>
-            ))
-          }
+            </div>
+          ))}
         </div>
       </div>
     </>
@@ -88,13 +86,3 @@ const CharacterList = ({ props }) => {
 };
 
 export default CharacterList;
-
-// export async function getServerSideProps(context) {
-//   const res = await fetch("https://swapi.dev/api/people/");
-//   const data = await res.json();
-//   console.log("acaaa", data);
-
-//   return {
-//     props: { data },
-//   };
-// }
