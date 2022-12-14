@@ -5,12 +5,12 @@ import { BsSearch } from "react-icons/bs";
 const Person = () => {
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
-  const [loading, setLoading] = useState(false);
+//   const [loading, setLoading] = useState(false);
   const url = `https://swapi.dev/api/people/?search=${name}`;
 
   const fetchCharacter = (e) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     try {
       axios.get(url).then((response) => {
         setPeople(response.data);
@@ -18,7 +18,7 @@ const Person = () => {
     } catch (error) {
       console.log(error);
     }
-    setLoading(false);
+    // setLoading(false);
   };
   return (
     <>
