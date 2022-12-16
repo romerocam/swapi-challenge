@@ -13,7 +13,7 @@ export default function Home({ data }) {
       <Person />
       <CharacterList props={data} />
       {/* <div>
-          {people.results ? <Person data={people} /> : <CharacterList />}
+          {data.results ? <Person/> : <CharacterList props={data}/>}
         </div> */}
     </div>
   );
@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
   const res = await fetch("https://swapi.dev/api/people/");
   const data = await res.json();
   // console.log("CONTEXT", context)
-  // console.log("acaaa", data);
+  // console.log("acaaa", data.results);
 
   return {
     props: { data },

@@ -43,7 +43,7 @@ const CharacterList = ({ props }) => {
       <Image
         src="https://images.unsplash.com/photo-1547700055-b61cacebece9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHN0YXIlMjB3YXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
         layout="fill"
-        className="object-cover fill"
+        className="object-cover"
         alt="starwars"
       />
 
