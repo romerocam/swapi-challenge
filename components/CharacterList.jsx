@@ -32,7 +32,7 @@ const CharacterList = ({ props }) => {
     axios.get("https://swapi.dev/api/people/").then((res) => {
       //   console.log("res in useEffect", res);
       setCharacters(res.data);
-        // console.log("CHARACTERS IN USEEFFECT--->", characters);
+      // console.log("CHARACTERS IN USEEFFECT--->", characters);
       setNext(res.data.next);
       //   console.log("NEXT in USEEFFECT--->", props.next);
     });
