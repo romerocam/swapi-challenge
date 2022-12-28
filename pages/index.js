@@ -12,9 +12,6 @@ export default function Home({ data }) {
       </Head>
       <Person />
       <CharacterList props={data} />
-      {/* <div>
-          {data.results ? <Person/> : <CharacterList props={data}/>}
-        </div> */}
     </div>
   );
 }
