@@ -13,7 +13,6 @@ const CharacterList = ({ props }) => {
 
   const handleNextPage = () => {
     axios.get(next).then((response) => {
-      //   console.log("RESPONSE", response);
       setCharacters(response.data);
       setPrevious(response.data.previous);
       setNext(response.data.next);
