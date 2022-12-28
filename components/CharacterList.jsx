@@ -71,7 +71,6 @@ const CharacterList = ({ props }) => {
                   <div>
                     <p className="text-3xl ">NAME: {item.name}</p>
                   </div>
-                  {/* <p className="text-2xl">GENDER: {item.gender}</p> */}
                   <p className="text-1xl">HEIGHT: {item.height}</p>
                 </div>
               </div>
