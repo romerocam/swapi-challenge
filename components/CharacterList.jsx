@@ -29,7 +29,6 @@ const CharacterList = ({ props }) => {
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people/").then((res) => {
-      //   console.log("res in useEffect", res);
       setCharacters(res.data);
       // console.log("CHARACTERS IN USEEFFECT--->", characters);
       setNext(res.data.next);
