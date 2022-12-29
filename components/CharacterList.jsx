@@ -32,7 +32,7 @@ const CharacterList = ({ props }) => {
       setCharacters(res.data);
       // console.log("CHARACTERS IN USEEFFECT--->", characters);
       setNext(res.data.next);
-        console.log("NEXT in USEEFFECT--->", props.next);
+        // console.log("NEXT in USEEFFECT--->", props.next);
     });
   }, []);
   return (
