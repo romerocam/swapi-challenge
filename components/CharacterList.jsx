@@ -6,10 +6,10 @@ const CharacterList = ({ props }) => {
   const [characters, setCharacters] = useState(props.results);
   const [next, setNext] = useState(props.next);
   const [previous, setPrevious] = useState(props.previous);
-  // console.log("PROPS", props);
-  // console.log("NEXT", next);
-  console.log("PREVIOUS", previous);
-  console.log("CHARACTERS", characters);
+  console.log("PROPS", props);
+  console.log("NEXT", next);
+  // console.log("PREVIOUS", previous);
+  // console.log("CHARACTERS", characters);
 
   const handleNextPage = () => {
     axios.get(next).then((response) => {
