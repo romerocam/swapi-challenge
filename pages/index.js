@@ -19,7 +19,7 @@ export default function Home({ data }) {
 export async function getServerSideProps(context) {
   const res = await fetch("https://swapi.dev/api/people/");
   const data = await res.json();
-  // console.log("CONTEXT", context)
+  console.log("CONTEXT", context)
   // console.log("acaaa", data.results);
 
   return {
