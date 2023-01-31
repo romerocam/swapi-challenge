@@ -8,8 +8,8 @@ const CharacterList = ({ props }) => {
   const [previous, setPrevious] = useState(props.previous);
   // console.log("PROPS", props);
   // console.log("NEXT", next);
-  // console.log("PREVIOUS", previous);
-  // console.log("CHARACTERS", characters);
+  console.log("PREVIOUS", previous);
+  console.log("CHARACTERS", characters);
 
   const handleNextPage = () => {
     axios.get(next).then((response) => {
@@ -32,7 +32,7 @@ const CharacterList = ({ props }) => {
       setCharacters(res.data);
       // console.log("CHARACTERS IN USEEFFECT--->", characters);
       setNext(res.data.next);
-        // console.log("NEXT in USEEFFECT--->", props.next);
+      // console.log("NEXT in USEEFFECT--->", props.next);
     });
   }, []);
   return (
