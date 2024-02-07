@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs" ;
+import { BsSearch } from "react-icons/bs";
 
 const Person = () => {
   const [name, setName] = useState("");
