@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 const CharacterList = ({ props }) => {
   const [characters, setCharacters] = useState(props.results);
   const [next, setNext] = useState(props.next);
-  const [previous, setPrevious] = useState(props.previous)  ;
+  const [previous, setPrevious] = useState(props.previous) ;
   // console.log("PROPS", props);
   // console.log("NEXT", next);
   // console.log("PREVIOUS", previous);
