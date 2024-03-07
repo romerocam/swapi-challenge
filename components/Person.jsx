@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 const Person = () => {
   const [name, setName] = useState("");
   const [people, setPeople] = useState({});
-  const url = `https://swapi.dev/api/people/?search=${name}`;
+  const url = `https://swapi.dev/api/people/?search=${name}` ;
 
   const fetchCharacter = (e) => {
     e.preventDefault();
