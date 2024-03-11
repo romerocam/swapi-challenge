@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Image from "next/legacy/image";
+import Image from "next/legacy/image" ;
 
 const CharacterList = ({ props }) => {
   const [characters, setCharacters] = useState(props.results);
