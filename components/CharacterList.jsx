@@ -9,7 +9,7 @@ const CharacterList = ({ props }) => {
   // console.log("PROPS", props);
   // console.log("NEXT", next);
   // console.log("PREVIOUS", previous);   
- 
+
 
   const handleNextPage = () => {
     axios.get(next).then((response) => {
